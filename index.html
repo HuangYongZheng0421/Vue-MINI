@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <script src="Compile.js"></script>
+    <script src="MyVue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--插值文本-->
+      <h2>{{msg}}</h2>
+      <!--html内容解析-->
+      <h5 m-html="html"></h5>
+      <!--双向绑定-->
+      <input type="text" m-model="msg" />
+      <!--事件处理-->
+      <button @click="haha">哈哈</button>
+      <!--m-text-->
+      <p m-text="name"></p>
+    </div>
+    <script>
+      let vm = new MyVue({
+        el: '#app',
+        data: {
+          msg: 'Hello,Vue!',
+          html: '<button>我是一个按钮</buttom>',
+          name: 'My Name is Vue!'
+        },
+        methods: {
+          haha() {
+            this.msg = '我被哈哈改变了';
+          }
+        },
+        created() {
+          setTimeout(()=>{
+            this.msg="你好,VueJs!";
+          },5000)       
+        },
+      });
+    </script>
+  </body>
+</html>
